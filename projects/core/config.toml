@@ -1,0 +1,25 @@
+## General info about this service
+[info]
+name = "core API"
+version = "v0.1.0"
+
+## Modes based on Gin server
+## debug mode: for development
+## release mode: for production
+mode = "debug"
+
+## Core gRPC server data
+[server]
+port = 7070
+
+## Proxy http server
+## allows gRPC server to be used by web browsers
+[webserver]
+port = 8080
+
+## If a wildcard '*' is included in the addresses
+## it allows all URLs, even if you define more addresses in the array
+[cors]
+allow_addresses = [
+    "*"
+]

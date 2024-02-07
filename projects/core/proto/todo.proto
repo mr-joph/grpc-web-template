@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package core;
+option go_package = "proto/pb";
+
+message Todo {
+    string id = 1;
+    string content = 2;
+    bool completed = 3;
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package core;
+option go_package = "proto/pb";
+
+import "google/protobuf/empty.proto";
+import "proto/todo.proto";
+
+message GetTodosOut {
+    repeated Todo todos = 1;
+}
+
+message NewTodoIn {
+    string content = 1;
+}
+
+message NewTodoOut {
+    Todo todo = 1;
+}
+
+message EditTodoOut {
+    Todo todo = 1;
+}
+
+message CheckTodoIn {
+    string id = 1;
+    bool completed = 2;
+}
+
+message CheckTodoOut {
+    Todo todo = 1;
+}
+
+message DeleteTodoIn {
+    string id = 1;
+}
+
+service TodoListService {
+    rpc GetTodos(google.protobuf.Empty) returns (GetTodosOut);
+    rpc NewTodo(NewTodoIn) returns (NewTodoOut);
+    rpc EditTodo(Todo) returns (EditTodoOut);
+    rpc CheckTodo(CheckTodoIn) returns (CheckTodoOut);
+    rpc DeleteTodo(DeleteTodoIn) returns (google.protobuf.Empty);
+    rpc CompleteAll(google.protobuf.Empty) returns (google.protobuf.Empty);
+    rpc ClearCompleted(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
